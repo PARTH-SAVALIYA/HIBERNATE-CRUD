@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 25, 2019 11:25:54 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Book" table="book" catalog="bookstore" optimistic-lock="version">
+        <id name="bookId" type="java.lang.Integer">
+            <column name="book_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="author" class="POJO.Author" fetch="select">
+            <column name="author" not-null="true" />
+        </many-to-one>
+        <property name="title" type="string">
+            <column name="title" length="128" not-null="true" />
+        </property>
+        <property name="price" type="float">
+            <column name="price" precision="12" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
